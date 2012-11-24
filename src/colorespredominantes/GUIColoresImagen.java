@@ -40,7 +40,7 @@ public class GUIColoresImagen extends javax.swing.JFrame {
         ColoresPanel = new javax.swing.JPanel();
         ObtenerColoresButton = new javax.swing.JButton();
         ImagenPanel = new javax.swing.JPanel();
-        CAmbiarImagenButton = new javax.swing.JButton();
+        CargarImagenButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,10 +68,10 @@ public class GUIColoresImagen extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        CAmbiarImagenButton.setText("Cargar Imagen");
-        CAmbiarImagenButton.addActionListener(new java.awt.event.ActionListener() {
+        CargarImagenButton.setText("Cargar Imagen");
+        CargarImagenButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CAmbiarImagenButtonActionPerformed(evt);
+                CargarImagenButtonActionPerformed(evt);
             }
         });
 
@@ -85,7 +85,7 @@ public class GUIColoresImagen extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(DireccionImagenTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(CAmbiarImagenButton))
+                        .addComponent(CargarImagenButton))
                     .addComponent(ImagenPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -103,7 +103,7 @@ public class GUIColoresImagen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DireccionImagenTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CAmbiarImagenButton)
+                    .addComponent(CargarImagenButton)
                     .addComponent(ObtenerColoresButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,7 +115,7 @@ public class GUIColoresImagen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CAmbiarImagenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CAmbiarImagenButtonActionPerformed
+    private void CargarImagenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarImagenButtonActionPerformed
         // TODO add your handling code here:
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileFilter(new FileNameExtensionFilter("Archivos de texto: (.jpg, .JPG, .png, .PNG)", "jpg", "JPG", "png", "PNG"));
@@ -127,11 +127,13 @@ public class GUIColoresImagen extends javax.swing.JFrame {
                 BufferedImage imagen = ImageIO.read(fileImagen);
                 if (imagen.getHeight() < 2000 || imagen.getWidth() < 2000){
                     if(imagen.getHeight() < 600 && imagen.getWidth() < 600){
+                        ImagenPanel.removeAll();
                         ImagenPanel.setBorder(new PintarImagen(imagen));
                     }
                     else{
-                        escalarImagen.escalar(10);
-//                        ImagenPanel.setBorder(new PintarImagen(imagen));
+                        escalarImagen = new EscalarImagen(imagen);
+                        ImagenPanel.add(escalarImagen);
+                        escalarImagen.escalar(3);
                     }
                 }
                 else{
@@ -142,7 +144,7 @@ public class GUIColoresImagen extends javax.swing.JFrame {
                 Logger.getLogger(GUIColoresImagen.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }//GEN-LAST:event_CAmbiarImagenButtonActionPerformed
+    }//GEN-LAST:event_CargarImagenButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,7 +181,7 @@ public class GUIColoresImagen extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CAmbiarImagenButton;
+    private javax.swing.JButton CargarImagenButton;
     private javax.swing.JPanel ColoresPanel;
     private javax.swing.JTextField DireccionImagenTextField;
     private javax.swing.JPanel ImagenPanel;

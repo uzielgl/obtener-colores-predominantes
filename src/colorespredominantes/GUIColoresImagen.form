@@ -28,7 +28,7 @@
                   <Group type="102" attributes="0">
                       <Component id="DireccionImagenTextField" pref="463" max="32767" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="CAmbiarImagenButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="CargarImagenButton" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="ImagenPanel" max="32767" attributes="0"/>
               </Group>
@@ -53,7 +53,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="DireccionImagenTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="CAmbiarImagenButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="CargarImagenButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="ObtenerColoresButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -104,12 +104,12 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Component class="javax.swing.JButton" name="CAmbiarImagenButton">
+    <Component class="javax.swing.JButton" name="CargarImagenButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cargar Imagen"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CAmbiarImagenButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CargarImagenButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
