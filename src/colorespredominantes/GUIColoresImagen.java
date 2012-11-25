@@ -5,6 +5,8 @@
 package colorespredominantes;
 
 import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
+import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -13,6 +15,8 @@ import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  *
@@ -20,6 +24,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class GUIColoresImagen extends javax.swing.JFrame {
     private EscalarImagen escalarImagen;
+    private BufferedImage imagen;
     /**
      * Creates new form GUIColoresImagen
      */
@@ -124,7 +129,7 @@ public class GUIColoresImagen extends javax.swing.JFrame {
             File fileImagen = fileChooser.getSelectedFile();
             DireccionImagenTextField.setText(fileImagen.toString());
             try {
-                BufferedImage imagen = ImageIO.read(fileImagen);
+                 imagen = ImageIO.read(fileImagen);
                 if (imagen.getHeight() < 2000 || imagen.getWidth() < 2000){
                     if(imagen.getHeight() < 600 && imagen.getWidth() < 600){
                         ImagenPanel.removeAll();
@@ -143,9 +148,46 @@ public class GUIColoresImagen extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(GUIColoresImagen.class.getName()).log(Level.SEVERE, null, ex);
             }
+            List<Punto> puntos = getArrayPixels( imagen );
+            List<Punto> centroides = BuscadorKMeans.buscarKCentroides(puntos, 5, .5);
+            showColors( centroides );
         }
     }//GEN-LAST:event_CargarImagenButtonActionPerformed
 
+    public void showColors( List<Punto> centroides ){
+        List<Color> colores = new ArrayList<Color>();
+        for( Punto p : centroides){
+            colores.add( new Color(p.x, p.y, p.z) );
+        }
+        System.out.println( colores );
+    }
+    
+     public List<Punto> getArrayPixels( BufferedImage image ){
+        byte[] pixels = ((DataBufferByte) image.getRaster().getDataBuffer()).getData();
+        List<Punto> puntos = new ArrayList<Punto>();
+        int pixel;
+        int red;
+        int green;
+        int blue;
+        
+        //System.out.println( pixels.length );
+        //System.out.println(     image.getRGB(0,0) );
+        
+        //int pixel = image.getRGB(0, image.getHeight() );
+       //La imagen debemos de redimensionarla a 200 x 200
+         
+        for(int i = 0; i < image.getWidth(); i++){
+           for(int j = 0; j < image.getHeight(); j++){
+               pixel = image.getRGB(i, j);
+               red = (pixel >> 16) & 0xFF;
+               green = (pixel >> 8) & 0xFF;
+               blue = pixel & 0xFF;
+               puntos.add( new Punto(red, green, blue) );
+           }
+        }
+          
+        return puntos;
+    }
     /**
      * @param args the command line arguments
      */
