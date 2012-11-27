@@ -24,7 +24,9 @@ import java.util.ArrayList;
  */
 public class GUIColoresImagen extends javax.swing.JFrame {
     private EscalarImagen escalarImagen;
-    private BufferedImage imagen;
+    private EscalarImagen escalarImagen2;
+    public BufferedImage imagen;
+    public BufferedImage imagen2;
     /**
      * Creates new form GUIColoresImagen
      */
@@ -43,24 +45,108 @@ public class GUIColoresImagen extends javax.swing.JFrame {
 
         DireccionImagenTextField = new javax.swing.JTextField();
         ColoresPanel = new javax.swing.JPanel();
+        ColorPanel1 = new javax.swing.JPanel();
+        ColorPanel2 = new javax.swing.JPanel();
+        ColorPanel3 = new javax.swing.JPanel();
+        ColorPanel4 = new javax.swing.JPanel();
+        ColorPanel5 = new javax.swing.JPanel();
         ObtenerColoresButton = new javax.swing.JButton();
         ImagenPanel = new javax.swing.JPanel();
         CargarImagenButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        javax.swing.GroupLayout ColorPanel1Layout = new javax.swing.GroupLayout(ColorPanel1);
+        ColorPanel1.setLayout(ColorPanel1Layout);
+        ColorPanel1Layout.setHorizontalGroup(
+            ColorPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        ColorPanel1Layout.setVerticalGroup(
+            ColorPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout ColorPanel2Layout = new javax.swing.GroupLayout(ColorPanel2);
+        ColorPanel2.setLayout(ColorPanel2Layout);
+        ColorPanel2Layout.setHorizontalGroup(
+            ColorPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        ColorPanel2Layout.setVerticalGroup(
+            ColorPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout ColorPanel3Layout = new javax.swing.GroupLayout(ColorPanel3);
+        ColorPanel3.setLayout(ColorPanel3Layout);
+        ColorPanel3Layout.setHorizontalGroup(
+            ColorPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        ColorPanel3Layout.setVerticalGroup(
+            ColorPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout ColorPanel4Layout = new javax.swing.GroupLayout(ColorPanel4);
+        ColorPanel4.setLayout(ColorPanel4Layout);
+        ColorPanel4Layout.setHorizontalGroup(
+            ColorPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        ColorPanel4Layout.setVerticalGroup(
+            ColorPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout ColorPanel5Layout = new javax.swing.GroupLayout(ColorPanel5);
+        ColorPanel5.setLayout(ColorPanel5Layout);
+        ColorPanel5Layout.setHorizontalGroup(
+            ColorPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        ColorPanel5Layout.setVerticalGroup(
+            ColorPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout ColoresPanelLayout = new javax.swing.GroupLayout(ColoresPanel);
         ColoresPanel.setLayout(ColoresPanelLayout);
         ColoresPanelLayout.setHorizontalGroup(
             ColoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(ColoresPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ColoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ColorPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ColorPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ColorPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ColorPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ColorPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         ColoresPanelLayout.setVerticalGroup(
             ColoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(ColoresPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ColorPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ColorPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ColorPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ColorPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ColorPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         ObtenerColoresButton.setText("Obtener Colores");
+        ObtenerColoresButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ObtenerColoresButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ImagenPanelLayout = new javax.swing.GroupLayout(ImagenPanel);
         ImagenPanel.setLayout(ImagenPanelLayout);
@@ -123,13 +209,13 @@ public class GUIColoresImagen extends javax.swing.JFrame {
     private void CargarImagenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarImagenButtonActionPerformed
         // TODO add your handling code here:
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileFilter(new FileNameExtensionFilter("Archivos de texto: (.jpg, .JPG, .png, .PNG)", "jpg", "JPG", "png", "PNG"));
+        fileChooser.setFileFilter(new FileNameExtensionFilter("Archivos de imagen: (.jpg, .JPG, .png, .PNG)", "jpg", "JPG", "png", "PNG"));
         int seleccion = fileChooser.showOpenDialog(this);
         if(seleccion == JFileChooser.APPROVE_OPTION){
             File fileImagen = fileChooser.getSelectedFile();
             DireccionImagenTextField.setText(fileImagen.toString());
             try {
-                 imagen = ImageIO.read(fileImagen);
+                imagen = ImageIO.read(fileImagen);
                 if (imagen.getHeight() < 2000 || imagen.getWidth() < 2000){
                     if(imagen.getHeight() < 600 && imagen.getWidth() < 600){
                         ImagenPanel.removeAll();
@@ -148,18 +234,38 @@ public class GUIColoresImagen extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(GUIColoresImagen.class.getName()).log(Level.SEVERE, null, ex);
             }
-            List<Punto> puntos = getArrayPixels( imagen );
-            List<Punto> centroides = BuscadorKMeans.buscarKCentroides(puntos, 5, .5);
-            showColors( centroides );
         }
     }//GEN-LAST:event_CargarImagenButtonActionPerformed
+
+    private void ObtenerColoresButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ObtenerColoresButtonActionPerformed
+        // TODO add your handling code here:
+        escalarImagen2 = new EscalarImagen(imagen);
+        imagen2 = escalarImagen2.escalarIm();
+        System.out.println("Width de la imagen original: " + +imagen.getWidth());
+        System.out.println("Width de la imagen renderizada: " + imagen2.getWidth());
+        System.out.println("Height de la imagen original: " + imagen.getHeight());
+        System.out.println("Height de la imagen renderizada: " + imagen2.getWidth());
+        List<Punto> puntos = getArrayPixels( imagen2 );
+        List<Punto> centroides = BuscadorKMeans.buscarKCentroides(puntos, 5, .5);
+        showColors( centroides );
+    }//GEN-LAST:event_ObtenerColoresButtonActionPerformed
 
     public void showColors( List<Punto> centroides ){
         List<Color> colores = new ArrayList<Color>();
         for( Punto p : centroides){
-            colores.add( new Color(p.x, p.y, p.z) );
+            Color col = new Color(p.x, p.y, p.z);
+            colores.add( col );
         }
-        System.out.println( colores );
+        ColorPanel1.setBackground(colores.get(0));
+        ColorPanel2.setBackground(colores.get(1));
+        ColorPanel3.setBackground(colores.get(2));
+        ColorPanel4.setBackground(colores.get(3));
+        ColorPanel5.setBackground(colores.get(4));
+//        System.out.println( colores.get(0) );
+//        System.out.println( colores.get(1) );
+//        System.out.println( colores.get(2) );
+//        System.out.println( colores.get(3) );
+//        System.out.println( colores.get(4) );
     }
     
      public List<Punto> getArrayPixels( BufferedImage image ){
@@ -224,6 +330,11 @@ public class GUIColoresImagen extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CargarImagenButton;
+    private javax.swing.JPanel ColorPanel1;
+    private javax.swing.JPanel ColorPanel2;
+    private javax.swing.JPanel ColorPanel3;
+    private javax.swing.JPanel ColorPanel4;
+    private javax.swing.JPanel ColorPanel5;
     private javax.swing.JPanel ColoresPanel;
     private javax.swing.JTextField DireccionImagenTextField;
     private javax.swing.JPanel ImagenPanel;

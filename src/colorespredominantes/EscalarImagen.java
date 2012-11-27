@@ -42,7 +42,7 @@ public class EscalarImagen extends JPanel {
             g2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             //se añade la foto
             g2D.drawImage(FOTO_tmp,0, 0, FOTO_tmp.getWidth(this), FOTO_tmp.getHeight(this), this);
-            g2.drawImage(Imagen_en_memoria, 0, 0, this);
+            g2.drawImage(Imagen_en_memoria, 0, 0, this);            
       }
     }
     public void escalar(int valor){
@@ -51,6 +51,19 @@ public class EscalarImagen extends JPanel {
         this.FOTO_tmp = FOTO_tmp.getScaledInstance((int) (FOTO_tmp.getWidth(this) - valEscalaX), (int) (FOTO_tmp.getHeight(this) - valEscalaY), Image.SCALE_AREA_AVERAGING);
         resize();
     }
+    
+    public BufferedImage escalarIm(){
+        valEscalaX =  (int) (FOTO_tmp.getWidth(this) * escalaImage(9) );
+        valEscalaY =  (int) (FOTO_tmp.getHeight(this) * escalaImage(9) );
+        this.FOTO_tmp = FOTO_tmp.getScaledInstance((int) (FOTO_tmp.getWidth(this) - valEscalaX), (int) (FOTO_tmp.getHeight(this) - valEscalaY), Image.SCALE_AREA_AVERAGING);
+        resize();
+        BufferedImage bi = new BufferedImage(FOTO_tmp.getWidth(null), FOTO_tmp.getHeight(null), BufferedImage.TYPE_INT_RGB);
+        Graphics bg = bi.getGraphics();
+        bg.drawImage(FOTO_tmp, 0, 0, null);
+        bg.dispose();
+        return bi;
+    }    
+
     private float escalaImage(int v){
         return  v/10f;
     }
