@@ -239,13 +239,13 @@ public class GUIColoresImagen extends javax.swing.JFrame {
 
     private void ObtenerColoresButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ObtenerColoresButtonActionPerformed
         // TODO add your handling code here:
-        escalarImagen2 = new EscalarImagen(imagen);
-        imagen2 = escalarImagen2.escalarIm();
-        System.out.println("Width de la imagen original: " + +imagen.getWidth());
-        System.out.println("Width de la imagen renderizada: " + imagen2.getWidth());
-        System.out.println("Height de la imagen original: " + imagen.getHeight());
-        System.out.println("Height de la imagen renderizada: " + imagen2.getWidth());
-        List<Punto> puntos = getArrayPixels( imagen2 );
+//        escalarImagen2 = new EscalarImagen(imagen);
+//        imagen2 = escalarImagen2.escalarIm();
+//        System.out.println("Width de la imagen original: " + +imagen.getWidth());
+//        System.out.println("Width de la imagen renderizada: " + imagen2.getWidth());
+//        System.out.println("Height de la imagen original: " + imagen.getHeight());
+//        System.out.println("Height de la imagen renderizada: " + imagen2.getWidth());
+        List<Punto> puntos = getArrayPixels( imagen );
         List<Punto> centroides = BuscadorKMeans.buscarKCentroides(puntos, 5, .5);
         showColors( centroides );
     }//GEN-LAST:event_ObtenerColoresButtonActionPerformed
